@@ -29,7 +29,7 @@ class DBClient {
      */
 
     isAlive() {
-        return this.client.IsConnected();
+        return this.client.isConnected();
     }
 
     /**
