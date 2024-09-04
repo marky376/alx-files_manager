@@ -1,35 +1,12 @@
 import express from 'express';
-import injections from './routes/index.js';
-import injectRoutes from './routes/index.js';
+import startServer from './libs/boot';
+import injectRoutes from './routes';
+import injectMiddlewares from './libs/middlewares';
 
-/**
- * Creating an Express application.
- */
+const server = express();
 
-const app = express();
+injectMiddlewares(server);
+injectRoutes(server);
+startServer(server);
 
-/**
- * Middleware to parse JSON request bodies.
- */
-
-app.use(express.json());
-
-/**
- * Load all routes
- */
-
-injectRoutes(app);
-
-/**
- * Set the port from the environment variable or use 5000 as a default.
- */
-const PORT = process.env.PORT || 5000;
-
-/**
- * Start the Express application.
- */
-app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
-});
-
-export default app;
+export default server;
