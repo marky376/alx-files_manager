@@ -59,7 +59,7 @@ class RedisClient {
 
     /**
      * Removes the value of a given key.
-     * @param {sting} key The key of the item to remove.
+     * @param {String} key The key of the item to remove.
      * @returns {Promise<void>}
      */
 
